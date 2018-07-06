@@ -9,6 +9,17 @@ var usersRouter = require('./routes/users');
 
 var app = express();
 
+var urlDB = process.env.MONGO;//var avec la base mongo
+
+//connection à la base de données
+var mongoose = require('mongoose');
+mongoose.Promise = global.Promise;
+//mongodb://<dbuser>:<dbpassword>@ds127851.mlab.com:27851/simplon-voitures
+// mongoose.connect('mongodb://localhost/Idriss')
+mongoose.connect(urlDB)
+  .then(() =>  console.log('connection succesful'))
+
+
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
